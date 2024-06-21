@@ -8,6 +8,21 @@ export default function AddProduct() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!name || !image) {
+      alert("Name and image are required !!!");
+      return;
+    }
+
+    try {
+      console.log("Success");
+    } catch {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="py-6">
@@ -15,7 +30,10 @@ export default function AddProduct() {
           <h1 className="font-bold text-2xl ">Add New Product</h1>
         </div>
 
-        <form className="flex flex-col gap-3 items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-3 items-center"
+        >
           <input
             onChange={(e) => setName(e.target.value)}
             value={name}
